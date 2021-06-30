@@ -14,15 +14,17 @@ class SRT():
             data = file.read()
         data = data.split("\n\n")
         print("found {} dialoges".format(len(data)))
-        data = [dialogue(d).parse() for d in data if d != ""]
+        data = [dialogue(d) for d in data if d != ""]
         return data
 
 class dialogue():
     def __init__(self,d = None) -> None:
         if d is not None or d != "":
             self.data = d.split("\n")
+            self.parse()
         else:
             print("please insert a string")
+            return None
 
     def parse(self):
         print("parsing.........",self.data)
@@ -32,11 +34,10 @@ class dialogue():
         self.from_time = parse(time_txt[0].strip())
         self.from_time_txt = self.from_time.strftime('%H:%M:%S::%f')
         self.to_time = parse(time_txt[1].strip())
-        self.to_time = self.to_time.strftime('%H:%M:%S---%f')
-        # self.display_time = self.to_time - self.from_time
-        # self.display_time_txt = self.display_time.strftime('%M:%S::%f')
+        self.to_time_txt = self.to_time.strftime('%H:%M:%S---%f')
+        self.display_time = self.to_time - self.from_time
+        self.display_time_txt = str(self.display_time.total_seconds()) + 'secs'
         self.txt = ''.join(s for s in self.data[2:])
-        
         return self
 
 
