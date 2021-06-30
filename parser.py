@@ -7,7 +7,11 @@ from dateutil.parser import parse
 
 class SRT():
     def __init__(self,filename) -> None:
-        self.filename = filename
+        try:
+            self.filename = filename
+            return self.parse()
+        except:
+            print("File could not be parsed.")
 
     def parse(self):
         with open(self.filename,"r", encoding='utf-8-sig') as file:
@@ -21,7 +25,7 @@ class dialogue():
     def __init__(self,d = None) -> None:
         if d is not None or d != "":
             self.data = d.split("\n")
-            self.parse()
+            return self.parse()
         else:
             print("please insert a string")
             return None
@@ -42,8 +46,7 @@ class dialogue():
 
 
 
-q = SRT("data/S04E01.srt")
-data = q.parse()
+data = SRT("data/S04E01.srt")
 print("parsed in data")
 
-# exec(open("parser.py").read())
+# run this to run whole code inside python shell: exec(open("parser.py").read())
