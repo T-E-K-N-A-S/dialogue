@@ -55,9 +55,4 @@ class dialogue():
         self.txt = ''.join(s for s in self.data[2:])
         return self
 
-
-
-data = SRT("data/S04E01.srt",series="Community",season=4,episode=1)
-print("\n\nfin.")
-
 # run inside python shell: exec(open("parser.py").read())
