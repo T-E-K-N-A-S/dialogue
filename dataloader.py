@@ -52,7 +52,7 @@ class dialogue():
         self.to_time_txt = to_time.strftime('%H:%M:%S---%f')
         # display_time = to_time - from_time
         self.display_time_txt = str((to_time - from_time).total_seconds()) + 'secs'
-        self.txt = ''.join(s for s in self.data[2:])
+        self.txt = ' '.join(s for s in self.data[2:]).strip()
         return self
 
 # run inside python shell: exec(open("ingestES.py").read())
