@@ -5,8 +5,8 @@ import config
 import json
 data = SRT("data/S04E01.srt",series="Community",season=4,episode=1)
 
-elastic_client = Elasticsearch(config.ELASTIC_SERVER_URL)
-# elastic_client.indices.create(index=config.ELASTIC_INDEX, include_type_name = True)
+elastic_client = Elasticsearch(config.ELASTIC_REMOTE_SERVER_URL)
+elastic_client.indices.create(index=config.ELASTIC_INDEX, include_type_name = True)
 
 mapping = elastic_client.indices.get_mapping(index = config.ELASTIC_INDEX)
 print(mapping)
