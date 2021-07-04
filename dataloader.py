@@ -42,17 +42,17 @@ class dialogue():
             return None
 
     def parse(self):
-        print("parsing.........",self.data)
+        # print("parsing.........",self.data)
         self.index = int(self.data[0])-1
         self.time_txt = self.data[1]
         time_txt = self.time_txt.split("-->")
-        self.from_time = parse(time_txt[0].strip())
-        self.from_time_txt = self.from_time.strftime('%H:%M:%S::%f')
-        self.to_time = parse(time_txt[1].strip())
-        self.to_time_txt = self.to_time.strftime('%H:%M:%S---%f')
-        self.display_time = self.to_time - self.from_time
-        self.display_time_txt = str(self.display_time.total_seconds()) + 'secs'
+        from_time = parse(time_txt[0].strip())
+        self.from_time_txt = from_time.strftime('%H:%M:%S::%f')
+        to_time = parse(time_txt[1].strip())
+        self.to_time_txt = to_time.strftime('%H:%M:%S---%f')
+        # display_time = to_time - from_time
+        self.display_time_txt = str((to_time - from_time).total_seconds()) + 'secs'
         self.txt = ''.join(s for s in self.data[2:])
         return self
 
-# run inside python shell: exec(open("parser.py").read())
+# run inside python shell: exec(open("ingestES.py").read())
