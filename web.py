@@ -28,5 +28,6 @@ async def root():
 @app.get("/dialogue")
 async def root():
     JS = elastic_client.search(index = config.ELASTIC_INDEX)
-    return {"message": "conversation in movies, series & podcasts","JS":JS}
+    print(JS)
+    return {"message": "conversation in movies, series & podcasts","data":JS["hits"]["hits"],"count":JS["hits"]["total"]["value"]}
 
