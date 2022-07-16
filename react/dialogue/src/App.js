@@ -23,7 +23,7 @@ class App extends React.Component {
       }
     }
 
-    fetch("http://localhost:3100/dialogue", object)
+    fetch("http://localhost:8000/dialogue", object)
       .then((Response) => Response.json())
       .then((findresponse) => {
         console.log(findresponse)
@@ -46,13 +46,13 @@ class App extends React.Component {
             <thead>
 
               <tr>
-                <th>dialogue</th>
+                <th>dialogues</th>
               </tr>
             </thead>
             <tbody>
               {this.state.txt  ? (this.state.txt.map(item => {
                 return (<tr> <td>
-                    {item._source.txt}
+                    {item._source.txt}  @ {item._source.from_time_txt}
                   </td>
                 </tr>
                 )

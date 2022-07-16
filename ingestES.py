@@ -7,7 +7,7 @@ data = SRT("data/S04E01.srt",series="Community",season=4,episode=1)
 
 elastic_client = Elasticsearch(config.ELASTIC_REMOTE_SERVER_URL)
 
-elastic_client.indices.delete(index=config.ELASTIC_INDEX, request_timeout=30)
+# elastic_client.indices.delete(index=config.ELASTIC_INDEX, request_timeout=30)
 elastic_client.indices.create(index=config.ELASTIC_INDEX, include_type_name = True, request_timeout=30)
 
 
